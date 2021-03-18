@@ -17,9 +17,16 @@
 ```
 http://localhost:5000/stocks/getstockticker/AVGO
 ```
-### returns JSON
+#### returns JSON
 ```
 [{"ticker":"AVGO","name":"Broadcom Inc","type":"Equity","region":"United States","currency":"USD"},
 {"ticker":"AVGOP","name":"","type":"Equity","region":"United States","currency":"USD"},
 {"ticker":"AVGO34.SAO","name":"Broadcom Inc","type":"Equity","region":"Brazil/Sao Paolo","currency":"BRL"}]
 ```
+### Get company overview
+```
+http://localhost:5000/stocks/getcompanyoverview/AVGO
+```
+#### returns JSON
+
+[Example output](https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo)
