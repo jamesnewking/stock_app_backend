@@ -5,17 +5,22 @@
  */
 const fetch = require('node-fetch');
 const transformQuery = data => {
-	return data.map( 
-		item => {
-			return {
-				ticker: item["1. symbol"],
-				name: item["2. name"],
-				type: item["3. type"],
-				region: item["4. region"],
-				currency: item["8. currency"]
+	if(data.length){
+		return data.map( 
+			item => {
+				return {
+					ticker: item["1. symbol"],
+					name: item["2. name"],
+					type: item["3. type"],
+					region: item["4. region"],
+					currency: item["8. currency"]
+				}
 			}
-		}
-	)
+		)
+	} else {
+		return []
+	}
+	
 }
 module.exports = async (req, res) => {
 	try {
@@ -27,7 +32,6 @@ module.exports = async (req, res) => {
 		searchStockTicker(search)
 			.then(res => res.json())
 			.then(data => res.send(transformQuery(data.bestMatches)))
-			// .then(data => res.send(data.bestMatches))
 	} catch (error) {
 		console.log(`Error getting stock ticker`);
 		res.status(404).send(null);
